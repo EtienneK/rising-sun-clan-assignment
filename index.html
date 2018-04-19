@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Rising Sun Clan Assignment</title>
+
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+
+	<style>
+		body {
+			padding-top: 5rem;
+		}
+
+		.starter-template {
+			padding: 2rem 1.5rem;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">Rising Sun Clan Assignment</a>
+	</nav>
+
+	<main role="main" class="container">
+		<div class="starter-template">
+			<div data-bind="visible: random().length === 0">
+
+				<h3>Number of Players</h3>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<button data-bind="click: removePlayer" style="font-weight:bold;" class="btn btn-outline-secondary" type="button">-</button>
+					</div>
+					<input style="text-align: center; background-color:#fff; font-weight: bold;" type="number" min="3" max="6" class="form-control form-control-lg "
+					 disabled data-bind="value: players().length">
+					<div class="input-group-append">
+						<button data-bind="click: addPlayer" style="font-weight:bold;" class="btn btn-outline-secondary" type="button">+</button>
+					</div>
+				</div>
+
+				<h3>Allowed Clans
+					<span class="small" data-bind="text: '(' + numAllowedClans() + ')'"></span>
+				</h3>
+				<p>An amount of clans equal to or more than the player count must be selected.</p>
+				<div data-bind="foreach: clans" class="form-check form-check-inline">
+					<input class="form-check-input" type="checkbox" data-bind="checked: allowed, click: canClick">
+					<label class="form-check-label" data-bind="text: name"></label>
+				</div>
+
+				<h3>Players</h3>
+				<div data-bind="foreach: players">
+					<input class="form-control form-control-lg" type="text" data-bind="value: name" placeholder="Player name">
+				</div>
+
+				<br>
+				<button data-bind="click: randomize" class="btn btn-primary">Randomize</button>
+
+			</div>
+
+			<div data-bind="visible: random().length > 0">
+				<div data-bind="foreach: random">
+					<h3 data-bind="text: player.name"></h3>
+					<h4 data-bind="text: clan.name"></h4>
+					<hr>
+				</div>
+				<button data-bind="click: clear" class="btn btn-primary">Clear</button>
+			</div>
+		</div>
+
+	</main>
+
+	<script type='text/javascript' src='code.js'></script>
+
+</html>
