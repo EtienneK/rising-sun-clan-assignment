@@ -52,9 +52,12 @@
 					<span class="small" data-bind="text: '(' + numAllowedClans() + ')'"></span>
 				</h3>
 				<p>An amount of clans equal to or more than the player count must be selected.</p>
-				<div data-bind="foreach: clans" class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" data-bind="checked: allowed, click: canClick">
-					<label class="form-check-label" data-bind="text: name"></label>
+
+				<div data-bind="foreach: clans" >
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="checkbox" data-bind="checked: allowed, click: canClick">
+						<label class="form-check-label" data-bind="text: name"></label>
+					</div>
 				</div>
 
 				<h3>Players</h3>
